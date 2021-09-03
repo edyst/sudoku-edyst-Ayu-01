@@ -185,6 +185,18 @@ var row=Math.floor(cell_id/9);
 
 function check(e){
     var cell_id=e.target.id;
+     
+    if(this.value>9){
+    if(this.value.length>1)
+    this.value=this.value.slice(0,1);
+    }
+    else if(this.value==0)
+    {
+        this.value="";
+    }
+
+
+
 
    
     var val=document.getElementById(`${cell_id}`).value;
@@ -235,6 +247,8 @@ function check(e){
         
         document.getElementById(`${cell_id}`).classList.add("wrong");
         flag[cell_id]=true;
+
+        console.log("*");
        
         
       
@@ -263,7 +277,7 @@ function check(e){
         
         document.getElementById(`${cell_id}`).classList.add("wrong");
         flag[cell_id]=true;
-       
+        console.log("**");
        
       
         }
@@ -279,6 +293,7 @@ function check(e){
     
    
     var bx_st=(Math.floor((row)/3)*3*9)+((Math.floor(col/3)*3)%9);
+    console.log(bx_st+" bx_st");
     
 
     for(var i=bx_st;i<bx_st+3;i++)
@@ -296,7 +311,7 @@ function check(e){
         
         document.getElementById(`${cell_id}`).classList.add("wrong");
         flag[cell_id]=true;
-       
+        console.log("1***");
         
       
         }
@@ -310,12 +325,15 @@ function check(e){
 
        
         tmp1=tmp1+9;
+        if(tmp1==cell_id)
+        continue;
         if(document.getElementById(`${tmp1}`).value==val&&val!=""){
            
             document.getElementById(`${tmp1}`).classList.add("wrong");
             
             document.getElementById(`${cell_id}`).classList.add("wrong");
             flag[cell_id]=true;
+            console.log("2***");
     
           
             }
@@ -327,12 +345,15 @@ function check(e){
             
              }
         tmp1=tmp1+9;
+        if(tmp1==cell_id)
+        continue;
         if(document.getElementById(`${tmp1}`).value==val&&val!=""){
            
             document.getElementById(`${tmp1}`).classList.add("wrong");
             
             document.getElementById(`${cell_id}`).classList.add("wrong");
            flag[cell_id]=true;
+           console.log("3***");
            
           
             }
@@ -383,7 +404,7 @@ function validate(){
  
  
     }
-
+ 
     document.querySelectorAll('.cell').forEach(cell=>cell.classList.remove("correct"))
     document.querySelectorAll('.cell').forEach(cell=>cell.classList.remove("wrong"))
 
@@ -518,6 +539,8 @@ function validate2(cell_id){
 
        
         tmp1=tmp1+9;
+        if(tmp1==cell_id)
+        continue;
         if(document.getElementById(`${tmp1}`).value==val){
            
             document.getElementById(`${tmp1}`).classList.add("wrong");
@@ -534,6 +557,8 @@ function validate2(cell_id){
             }
            
         tmp1=tmp1+9;
+        if(tmp1==cell_id)
+        continue;
         if(document.getElementById(`${tmp1}`).value==val){
            
             document.getElementById(`${tmp1}`).classList.add("wrong");
