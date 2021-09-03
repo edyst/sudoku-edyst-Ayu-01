@@ -14,15 +14,15 @@ function difficulty(diff){
         document.getElementById("hard").classList.remove("btn-selected");
         
      arr=[
-      0,0,6,1,0,0,0,0,0,
-      3,0,0,0,0,0,0,0,5,
-      1,0,9,0,4,2,0,8,0,
-      0,0,8,0,0,0,1,3,2,
-      0,0,3,6,0,0,0,9,8,
-      2,9,0,3,0,0,7,6,0,
-      0,6,0,4,0,0,0,7,1,
-      8,1,0,2,6,0,3,0,9,
-      4,0,7,9,0,0,2,5,6
+        3,0,9,0,0,0,2,0,1,
+        0,0,2,8,0,0,0,0,0,
+        4,0,0,0,3,0,0,7,5,
+        0,0,0,4,0,8,0,2,9,
+        5,0,0,0,0,0,7,0,0,
+        0,0,4,0,2,7,0,0,0,
+        0,7,6,5,8,3,4,0,2,
+        0,4,3,0,1,2,9,5,6,
+        0,1,5,9,0,0,0,0,0,
     ]
 }
 
@@ -384,10 +384,27 @@ function validate(){
  
     }
 
+    document.querySelectorAll('.cell').forEach(cell=>cell.classList.remove("correct"))
+    document.querySelectorAll('.cell').forEach(cell=>cell.classList.remove("wrong"))
+
+
     if(you_win==1)
     alert("You Win");
     else
-    alert("You lose");
+    {
+        var fill=1;
+        for(var i=0;i<81;i++)
+        {
+           
+            if(document.getElementById(`${i}`).value=="")
+            fill=0;
+        }
+        if(fill==0)
+        alert("Complete the game");
+        else
+        alert("You lose");
+
+    }
 
 
 
@@ -402,7 +419,7 @@ function validate2(cell_id){
     var row=Math.floor(cell_id/9);
     var col=Math.floor(cell_id%9);
 
-    document.querySelectorAll('.cell').forEach(input=>input.disabled=true)
+    // document.querySelectorAll('.cell').forEach(input=>input.disabled=true)
   
    
     
